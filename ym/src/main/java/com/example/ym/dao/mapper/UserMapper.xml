@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.ym.dao.mapper.UserMapper">
+    <resultMap id="resultmap" type="com.example.ym.pojo.User">
+        <id column="id" property="id" jdbcType="INTEGER"></id>
+        <result column="name" property="name" jdbcType="VARCHAR"></result>
+        <result column="age" property="age" jdbcType="INTEGER"></result>
+    </resultMap>
+    <select id="findall" resultMap="resultmap">SELECT * FROM `user` where name like "%"#{str}"%"</select>
+</mapper>
