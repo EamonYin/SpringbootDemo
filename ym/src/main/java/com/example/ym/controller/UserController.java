@@ -21,6 +21,11 @@ public class UserController {
     @Autowired
     private UserServiceImp usi;
 
+    /**
+     * 模糊查询用户
+     * @param request
+     * @return
+     */
     @RequestMapping("/select")
     @ResponseBody
     private List<User> getAllUser(HttpServletRequest request) {
@@ -29,4 +34,56 @@ public class UserController {
         System.out.println(findall);
         return findall;
     }
+
+    /**
+     * 分页查询
+     * @param request
+     * @return
+     */
+    @RequestMapping("/selectByPage")
+    @ResponseBody
+    private List<User> getAllUserByPage(HttpServletRequest request,int num){
+        String str = request.getParameter("str");
+        List<User> allByPage = usi.findAllByPage(str, num, 2);
+        return allByPage;
+    }
+
+    /**
+     * 删除用户
+     * @param request
+     * @return
+     */
+    @RequestMapping("/deleteUserByid")
+    @ResponseBody
+    private int deleteUserByid(HttpServletRequest request){
+        String id = request.getParameter("id");
+        int i = usi.deleteUser(Integer.valueOf(id));
+        return i;
+    }
+
+    /**
+     * 更新用户
+     * @param user
+     * @return
+     */
+    @RequestMapping("/updateUser")
+    @ResponseBody
+    private int updateUser(User user){
+//        User user1 = new User(1,"哆啦A梦",12);
+        int i = usi.updateUser(user);
+        return i;
+    }
+
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
+    @RequestMapping("/addUser")
+    @ResponseBody
+    private int addUser(User user){
+        int i = usi.addUser(user);
+        return i;
+    }
+
 }

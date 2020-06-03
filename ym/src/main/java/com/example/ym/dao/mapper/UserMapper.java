@@ -11,9 +11,11 @@ import java.util.List;
 public interface UserMapper {
     List<User> findall(@Param("str") String str);//查询
 
-    void addUser(User user);//新增
+//    List<User> findAllByPage(int pageNum , int pageSize);//分页查询
 
-    void updateUser(User user);//修改
+    int addUser(User user);//新增
 
-    int deleteUser(Integer id);//根据id删除
+    int updateUser(User user);//修改
+
+    int deleteUser(@Param("id") Integer id);//根据id删除
 }

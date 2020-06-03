@@ -4,10 +4,15 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/ym?serverTimezone=UTC&characterEncoding=utf8&useSSL=false
     username: root
-    password:
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
   type-aliases-package: com.example.ym.pojo
 #  typeAliasesPackage: com.example.ym.pojo
   mapperLocation: classpath:com/example/ym/dao/*.xml
+#分页pageHelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
 
